@@ -8,6 +8,12 @@ UStatComponent::UStatComponent()
 }
 
 
+void UStatComponent::TakeDamage(float DamageAmount)
+{
+	Health = FMath::Clamp(Health-DamageAmount, 0.f, MaxHealth);
+	OnHealthChanged.Broadcast(Health, MaxHealth);
+}
+
 void UStatComponent::BeginPlay()
 {
 	Super::BeginPlay();

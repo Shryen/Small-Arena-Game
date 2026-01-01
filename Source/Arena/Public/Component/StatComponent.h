@@ -22,6 +22,9 @@ public:
 	float GetHealth() const {return Health;}
 	float GetMaxHealth() const {return MaxHealth;}
 	
+	UFUNCTION(BlueprintCallable)
+	void TakeDamage(float DamageAmount);
+	
 protected:
 	virtual void BeginPlay() override;
 	
