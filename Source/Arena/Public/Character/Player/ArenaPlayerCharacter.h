@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Character/ArenaBaseCharacter.h"
+#include "Component/StatComponent.h"
 #include "ArenaPlayerCharacter.generated.h"
 
 UCLASS()
@@ -13,6 +14,8 @@ public:
 	AArenaPlayerCharacter();
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintPure)
+	UStatComponent* GetStatComponent() const { return StatComponent; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -22,4 +25,8 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	class UCameraComponent* FollowCamera;
+	
+private:
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<UStatComponent> StatComponent;
 };

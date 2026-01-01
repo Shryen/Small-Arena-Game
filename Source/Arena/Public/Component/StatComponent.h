@@ -13,11 +13,14 @@ class ARENA_API UStatComponent : public UActorComponent
 public:
 	UStatComponent();
 
-	UPROPERTY(BlueprintAssignable, Category = "Events")
+	UPROPERTY(BlueprintAssignable, Category = "Stats|Vital")
 	FOnAttributeChangedSignature OnHealthChanged;
 	
 	UFUNCTION(BlueprintCallable, Category = "Stats|Vital")
 	void SetHealth(float NewHealth);
+	
+	float GetHealth() const {return Health;}
+	float GetMaxHealth() const {return MaxHealth;}
 	
 protected:
 	virtual void BeginPlay() override;

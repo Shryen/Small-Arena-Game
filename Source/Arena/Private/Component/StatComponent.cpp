@@ -4,6 +4,7 @@
 UStatComponent::UStatComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
+	Health = MaxHealth;
 }
 
 

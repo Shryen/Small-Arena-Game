@@ -9,7 +9,7 @@ AArenaPlayerCharacter::AArenaPlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	
-	// 1. Don't rotate when the controller rotates. Let that just affect the camera.
+	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
@@ -21,11 +21,13 @@ AArenaPlayerCharacter::AArenaPlayerCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->TargetArmLength = 400.0f;
 	CameraBoom->bUsePawnControlRotation = true; 
-
-	// 4. Create a follow camera
+	
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); 
 	FollowCamera->bUsePawnControlRotation = false; 
+	
+	// Create StatComponent for handling attributes
+	StatComponent = CreateDefaultSubobject<UStatComponent>(TEXT("StatComponent"));
 }
 
 void AArenaPlayerCharacter::BeginPlay()
