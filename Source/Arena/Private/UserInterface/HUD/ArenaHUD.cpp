@@ -11,6 +11,11 @@ void AArenaHUD::BeginPlay()
 	TryInitializeHUD();
 }
 
+AArenaHUD::AArenaHUD()
+{
+	PrimaryActorTick.bCanEverTick = false;
+}
+
 void AArenaHUD::TryInitializeHUD()
 {
 	if (APawn* PlayerPawn = Cast<APawn>(GetOwningPawn()))

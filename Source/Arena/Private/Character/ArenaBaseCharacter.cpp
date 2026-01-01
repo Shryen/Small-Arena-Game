@@ -3,7 +3,7 @@
 
 AArenaBaseCharacter::AArenaBaseCharacter()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 void AArenaBaseCharacter::BeginPlay()

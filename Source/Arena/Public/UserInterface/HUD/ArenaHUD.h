@@ -14,6 +14,7 @@ class ARENA_API AArenaHUD : public AHUD
 	
 public:
 	virtual void BeginPlay() override;
+	AArenaHUD();
 	
 protected:
 	void TryInitializeHUD();
