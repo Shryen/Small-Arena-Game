@@ -28,6 +28,9 @@ AArenaPlayerCharacter::AArenaPlayerCharacter()
 	
 	// Create StatComponent for handling attributes
 	StatComponent = CreateDefaultSubobject<UStatComponent>(TEXT("StatComponent"));
+	
+	WeaponTip = CreateDefaultSubobject<USceneComponent>(TEXT("Weapon Tip"));
+	WeaponTip->SetupAttachment(GetRootComponent());
 }
 
 void AArenaPlayerCharacter::BeginPlay()

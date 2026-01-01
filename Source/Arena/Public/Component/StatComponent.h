@@ -35,4 +35,7 @@ private:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Stats|Vital")
 	float MaxHealth = 100.f;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Stats|Weapon")
+	int Ammo = 62.f;
 };

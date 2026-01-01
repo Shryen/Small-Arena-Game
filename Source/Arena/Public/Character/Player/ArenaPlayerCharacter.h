@@ -25,8 +25,11 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	class UCameraComponent* FollowCamera;
-	
+
 private:
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UStatComponent> StatComponent;
+	
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<USceneComponent> WeaponTip;
 };
