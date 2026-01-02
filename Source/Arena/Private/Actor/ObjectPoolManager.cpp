@@ -48,8 +48,8 @@ APooledActor* UObjectPoolManager::SpawnFromPool(FTransform SpawnTransform)
 	{
 		if (IsValid(FoundActor))
 		{
-			FoundActor->SetInUse(true);
 			FoundActor->SetActorTransform(SpawnTransform);
+			FoundActor->SetInUse(true);
 			return FoundActor;
 		}
 	}

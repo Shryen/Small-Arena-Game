@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Bullet.generated.h"
 
+
 UCLASS()
 class ARENA_API ABullet : public APooledActor
 {
@@ -17,4 +18,12 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
+	virtual void SetInUse(bool bInUse) override;
+	
+private:
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<class USphereComponent> BulletCollision;
+	
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<class UProjectileMovementComponent> ProjectileMovementComponent;
 };

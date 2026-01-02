@@ -1,6 +1,4 @@
 ﻿#include "Character/Player/ArenaPlayerCharacter.h"
-
-#include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 

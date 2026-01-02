@@ -1,6 +1,7 @@
 ﻿#include "Controller/Player/ArenaPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Character/Player/ArenaPlayerCharacter.h"
 
 void AArenaPlayerController::BeginPlay()
 {
@@ -17,6 +18,7 @@ void AArenaPlayerController::SetupInputComponent()
 	{
 		EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AArenaPlayerController::Move);
 		EnhancedInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &AArenaPlayerController::Look);
+		EnhancedInput->BindAction(FireAction, ETriggerEvent::Triggered, this, &AArenaPlayerController::Fire);
 	}
 }
 
@@ -44,5 +46,18 @@ void AArenaPlayerController::Look(const FInputActionValue& Value)
 	const FVector2D Input = Value.Get<FVector2D>();
 	AddPitchInput(-Input.Y);
 	AddYawInput(Input.X);
+}
+
+void AArenaPlayerController::Fire(const FInputActionValue& Value)
+{
+	if (APawn* ControlledPawn = Cast<APawn>(GetPawn()))
+		if (AArenaPlayerCharacter* ControlledCharacter = Cast<AArenaPlayerCharacter>(ControlledPawn))
+			if (UObjectPoolManager* PoolManager = ControlledCharacter->GetObjectPoolManager())
+			{
+				FTransform Transform;
+				Transform.SetLocation(ControlledCharacter->GetBulletSpawnLocation());
+				Transform.SetRotation(GetControlRotation().Quaternion());
+				PoolManager->SpawnFromPool(Transform);
+			}
 }
 

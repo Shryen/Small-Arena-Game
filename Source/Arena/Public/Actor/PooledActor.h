@@ -16,7 +16,7 @@ public:
 	float GetTimeToLive() const { return TimeToLive;}
 	
 	UFUNCTION(BlueprintCallable)
-	void SetInUse(bool bInUse);
+	virtual void SetInUse(bool bInUse);
 	UFUNCTION(BlueprintCallable)
 	void ReturnToPool();
 

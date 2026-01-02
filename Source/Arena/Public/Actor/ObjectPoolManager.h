@@ -16,6 +16,9 @@ public:
 	UObjectPoolManager();
 	
 	void InitializePool();
+	
+	UFUNCTION(BlueprintCallable, Category = "Pool")
+	APooledActor* SpawnFromPool(FTransform SpawnTransform);
 
 protected:
 	virtual void BeginPlay() override;
@@ -30,7 +33,4 @@ protected:
 	TArray<APooledActor*> ObjectPool;
 	
 	APooledActor* FindFirstAvailableActor();
-	
-	UFUNCTION(BlueprintCallable, Category = "Pool")
-	APooledActor* SpawnFromPool(FTransform SpawnTransform);
 };

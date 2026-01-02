@@ -28,6 +28,11 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Arena|Input|Actions")
 	TObjectPtr<class UInputAction> LookAction;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "Arena|Input|Actions")
+	TObjectPtr<class UInputAction> FireAction;
+	
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+	void Fire(const FInputActionValue& Value);
+
 };

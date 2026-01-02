@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
+#include "Camera/CameraComponent.h"
 #include "Character/ArenaBaseCharacter.h"
 #include "Component/StatComponent.h"
 #include "ArenaPlayerCharacter.generated.h"
@@ -16,6 +17,9 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	UStatComponent* GetStatComponent() const { return StatComponent; }
+	
+	UFUNCTION(BlueprintPure)
+	FVector GetCameraForwardVector() const { return FollowCamera->GetForwardVector(); }
 
 protected:
 	virtual void BeginPlay() override;

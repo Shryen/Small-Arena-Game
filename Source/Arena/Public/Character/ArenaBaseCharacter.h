@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
+#include "Actor/ObjectPoolManager.h"
 #include "GameFramework/Character.h"
 #include "ArenaBaseCharacter.generated.h"
 
@@ -13,8 +14,16 @@ public:
 	AArenaBaseCharacter();
 	virtual void Tick(float DeltaTime) override;
 
+	UObjectPoolManager* GetObjectPoolManager() const { return ObjectPoolManager; }
+
+	FVector GetBulletSpawnLocation() const { return BulletSpawnLocation->GetComponentLocation(); }
 
 protected:
 	virtual void BeginPlay() override;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "Pool")
+	TObjectPtr<class UObjectPoolManager> ObjectPoolManager;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	TObjectPtr<class USceneComponent> BulletSpawnLocation;
 };
