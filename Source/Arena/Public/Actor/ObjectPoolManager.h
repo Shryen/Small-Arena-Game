@@ -5,6 +5,8 @@
 #include "ObjectPoolManager.generated.h"
 
 
+class APooledActor;
+
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class ARENA_API UObjectPoolManager : public UActorComponent
 {
@@ -12,8 +14,23 @@ class ARENA_API UObjectPoolManager : public UActorComponent
 
 public:
 	UObjectPoolManager();
+	
+	void InitializePool();
 
 protected:
 	virtual void BeginPlay() override;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "Pool")
+	TSubclassOf<APooledActor> PooledActorClass;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Pool")
+	int32 PoolSize = 5;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Pool")
+	TArray<APooledActor*> ObjectPool;
+	
+	APooledActor* FindFirstAvailableActor();
+	
+	UFUNCTION(BlueprintCallable, Category = "Pool")
+	APooledActor* SpawnFromPool(FTransform SpawnTransform);
 };
